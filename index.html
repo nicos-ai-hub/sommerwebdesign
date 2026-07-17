@@ -42,8 +42,11 @@
   .marke { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.05rem; letter-spacing: .01em; }
   .marke b { color: var(--violett); }
   nav { display: flex; gap: 1.6rem; align-items: center; flex-wrap: wrap; }
-  nav a { color: var(--leise); text-decoration: none; font-size: .9rem; font-weight: 500; }
+  nav a { color: var(--leise); text-decoration: none; font-size: .9rem; font-weight: 500; position: relative; }
   nav a:hover { color: #fff; }
+  nav a.aktiv { color: #fff; }
+  nav a.aktiv::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px;
+    background: linear-gradient(92deg, var(--cyan), var(--violett)); border-radius: 2px; }
   nav a.knopf { color: #0a0c11; background: #fff; padding: .5rem 1.1rem; border-radius: 999px; font-weight: 600; }
   nav a.knopf:hover { background: var(--cyan); }
   /* Hero */
@@ -165,10 +168,13 @@
 <header>
   <div class="marke">sommer<b>webdesign</b>.com</div>
   <nav>
-    <a href="#leistungen">Leistungen</a>
-    <a href="#arbeiten">Arbeiten</a>
-    <a href="#preise">Preise</a>
-    <a class="knopf" href="#kontakt">Projekt anfragen</a>
+    <a href="index.html" class="aktiv">Start</a>
+    <a href="leistungen.html">Leistungen</a>
+    <a href="index.html#arbeiten">Arbeiten</a>
+    <a href="ueber-mich.html">Über mich</a>
+    <a href="index.html#preise">Preise</a>
+    <a href="faq.html">FAQ</a>
+    <a class="knopf" href="kontakt.html">Projekt anfragen</a>
   </nav>
 </header>
 
@@ -214,6 +220,7 @@
       Textänderungen, neue Fotos. Sie kümmern sich um Ihr Geschäft –
       ich mich um Ihren Auftritt im Netz.</p></div>
   </div>
+  <p class="unterzeile"><a href="leistungen.html">Alle Leistungen im Detail ansehen →</a></p>
 </section>
 
 <section id="arbeiten" class="zeigen">
@@ -291,6 +298,8 @@
     eine Website gibt – Sie bekommen innerhalb weniger Tage einen unverbindlichen
     Beispiel-Entwurf. Egal welche Branche. Kein Kleingedrucktes, kein Risiko.</p>
     <a class="cta" href="mailto:sommer@sommerwebdesign.com">sommer@sommerwebdesign.com →</a>
+    <p class="unterzeile" style="margin-top:1.2rem;">
+      <a href="kontakt.html">Zur Kontaktseite</a> · <a href="faq.html">Häufige Fragen</a></p>
   </div>
 </section>
 

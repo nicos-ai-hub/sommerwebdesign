@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leistungen – Nico Sommer | sommerwebdesign.com</title>
+<meta name="description" content="Individuelles Webdesign, mehrseitige Website-Pakete, Rechtssicherheit, Hosting und laufende Pflege – alle Leistungen von sommerwebdesign.com im Überblick.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0c11; --flaeche: #10131a; --linie: rgba(255,255,255,.08);
+    --text: #e8eaf0; --leise: #9aa3b5;
+    --cyan: #67e8f9; --violett: #a78bfa; --pink: #f0abfc;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  ::selection { background: #a78bfa55; }
+  body {
+    font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text);
+    line-height: 1.65; overflow-x: hidden;
+  }
+  .glut { position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(600px 400px at 85% -5%, rgba(167,139,250,.16), transparent 65%),
+      radial-gradient(700px 500px at -10% 25%, rgba(103,232,249,.10), transparent 65%),
+      radial-gradient(600px 500px at 60% 110%, rgba(240,171,252,.08), transparent 65%);
+  }
+  h1, h2, h3, .zahl { font-family: 'Space Grotesk', sans-serif; }
+  .verlauf-text {
+    background: linear-gradient(92deg, var(--cyan), var(--violett) 55%, var(--pink));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  header {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    padding: .85rem 5vw; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    background: rgba(10, 12, 17, .72); border-bottom: 1px solid var(--linie);
+  }
+  .marke { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.05rem; letter-spacing: .01em; }
+  .marke b { color: var(--violett); }
+  nav { display: flex; gap: 1.6rem; align-items: center; flex-wrap: wrap; }
+  nav a { color: var(--leise); text-decoration: none; font-size: .9rem; font-weight: 500; position: relative; }
+  nav a:hover { color: #fff; }
+  nav a.aktiv { color: #fff; }
+  nav a.aktiv::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px;
+    background: linear-gradient(92deg, var(--cyan), var(--violett)); border-radius: 2px; }
+  nav a.knopf { color: #0a0c11; background: #fff; padding: .5rem 1.1rem; border-radius: 999px; font-weight: 600; }
+  nav a.knopf:hover { background: var(--cyan); }
+  .hero { padding: clamp(3.2rem, 8vw, 5.5rem) 5vw clamp(2rem, 5vw, 3rem); max-width: 1100px; margin: 0 auto; }
+  .abzeichen {
+    display: inline-flex; align-items: center; gap: .5rem; font-size: .82rem; color: var(--leise);
+    border: 1px solid var(--linie); background: rgba(255,255,255,.03);
+    padding: .35rem .9rem; border-radius: 999px; margin-bottom: 1.4rem;
+  }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.12;
+             letter-spacing: -.02em; max-width: 22ch; }
+  .hero .lauftext { margin-top: 1.3rem; font-size: 1.08rem; color: var(--leise); max-width: 58ch; }
+  .cta {
+    display: inline-flex; align-items: center; gap: .5rem; text-decoration: none;
+    font-weight: 600; font-size: .98rem; padding: .85rem 1.6rem; border-radius: 999px;
+    background: linear-gradient(92deg, var(--cyan), var(--violett)); color: #0a0c11;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .cta:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(167,139,250,.35); }
+  section { padding: clamp(2.4rem, 6vw, 4rem) 5vw; max-width: 1100px; margin: 0 auto; }
+  .vorzeile { font-size: .8rem; letter-spacing: .18em; text-transform: uppercase;
+              font-weight: 600; color: var(--violett); margin-bottom: .7rem; }
+  h2 { font-size: clamp(1.5rem, 3.2vw, 2.1rem); font-weight: 700; letter-spacing: -.015em;
+       max-width: 34ch; margin-bottom: 1.6rem; }
+  .raster { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .zelle {
+    background: var(--flaeche); border: 1px solid var(--linie);
+    border-radius: 20px; padding: 1.6rem; transition: border-color .25s, transform .25s;
+  }
+  .zelle:hover { border-color: rgba(167,139,250,.45); transform: translateY(-3px); }
+  .zelle .icon { font-size: 1.5rem; }
+  .zelle h3 { font-size: 1.08rem; margin: .7rem 0 .35rem; }
+  .zelle p { color: var(--leise); font-size: .93rem; }
+  .zelle ul { margin-top: .6rem; padding-left: 1.1rem; color: var(--leise); font-size: .9rem; }
+  .zelle li { padding: .15rem 0; }
+  .paket-schema { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1rem; }
+  .paket-schema span { background: rgba(255,255,255,.04); border: 1px solid var(--linie);
+    border-radius: 10px; padding: .5rem .9rem; font-size: .86rem; color: var(--text); }
+  .paket-schema span b { color: var(--cyan); font-weight: 600; }
+  .stile { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 1rem; }
+  .stil { border-radius: 18px; padding: 1.4rem; border: 1px solid var(--linie); }
+  .stil.kraftvoll { background: linear-gradient(160deg, rgba(240,171,252,.06), var(--flaeche)); }
+  .stil.elegant { background: linear-gradient(160deg, rgba(167,139,250,.08), var(--flaeche)); }
+  .stil.modern { background: linear-gradient(160deg, rgba(103,232,249,.08), var(--flaeche)); }
+  .stil h3 { font-size: 1rem; margin-bottom: .4rem; }
+  .stil p { color: var(--leise); font-size: .88rem; }
+  .finale {
+    text-align: center; border: 1px solid var(--linie); border-radius: 28px;
+    padding: clamp(2.2rem, 6vw, 3.6rem) 5vw; background:
+      radial-gradient(500px 260px at 50% -20%, rgba(167,139,250,.18), transparent 70%), var(--flaeche);
+  }
+  .finale h2 { margin: 0 auto 1rem; }
+  .finale p { color: var(--leise); max-width: 52ch; margin: 0 auto 1.6rem; }
+  footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+           padding: 1.6rem 5vw 2.2rem; max-width: 1100px; margin: 0 auto;
+           color: var(--leise); font-size: .84rem; border-top: 1px solid var(--linie); }
+  footer a { color: var(--leise); }
+  footer a:hover { color: #fff; }
+</style>
+</head>
+<body>
+<div class="glut"></div>
+<header>
+  <div class="marke">sommer<b>webdesign</b>.com</div>
+  <nav>
+    <a href="index.html">Start</a>
+    <a href="leistungen.html" class="aktiv">Leistungen</a>
+    <a href="index.html#arbeiten">Arbeiten</a>
+    <a href="ueber-mich.html">Über mich</a>
+    <a href="index.html#preise">Preise</a>
+    <a href="faq.html">FAQ</a>
+    <a class="knopf" href="kontakt.html">Projekt anfragen</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="abzeichen">Leistungen</div>
+  <h1>Alles aus einer Hand – <span class="verlauf-text">von der Idee bis online</span></h1>
+  <p class="lauftext">Eine Website ist mehr als eine hübsche Startseite. Hier sehen Sie
+  im Detail, was bei sommerwebdesign.com wirklich in Ihrem Paket steckt.</p>
+</div>
+
+<section>
+  <div class="vorzeile">Im Detail</div>
+  <h2>Was Sie bekommen</h2>
+  <div class="raster">
+    <div class="zelle"><span class="icon">✦</span>
+      <h3>Individuelles Webdesign</h3>
+      <p>Kein Baukasten, kein Einheitslook: Jede Website wird für den Betrieb
+      entworfen, dem sie gehört – mit Ihren Farben, Ihrer Sprache, Ihrer
+      Handschrift. Auf dem Handy genauso stark wie am großen Bildschirm.</p></div>
+    <div class="zelle"><span class="icon">🎨</span>
+      <h3>Branchenspezifisches Design</h3>
+      <p>Ein Malerbetrieb braucht ein anderes Auftreten als eine Physiopraxis
+      oder ein Friseursalon. Ich wähle Design-Sprache und Aufbau passend zu
+      Ihrer Branche – nicht dieselbe Vorlage für alle.</p></div>
+    <div class="zelle"><span class="icon">📄</span>
+      <h3>Mehrseitige Website-Pakete</h3>
+      <p>Ihre Website besteht aus mehreren Unterseiten, keiner einzelnen Seite:</p>
+      <div class="paket-schema">
+        <span><b>Start</b></span><span><b>Leistungen</b> im Detail</span>
+        <span><b>Über uns</b></span><span><b>Kontakt</b> mit Anfahrt</span>
+      </div></div>
+    <div class="zelle"><span class="icon">⚖️</span>
+      <h3>Rechtssicherheit</h3>
+      <p>Impressum und Datenschutzerklärung nach deutschem Recht sind bei
+      jeder Website automatisch dabei – nicht als Aufpreis, sondern
+      selbstverständlich inklusive.</p></div>
+    <div class="zelle"><span class="icon">🚀</span>
+      <h3>Hosting &amp; Technik</h3>
+      <p>Ihre Website läuft auf zuverlässiger, schneller Infrastruktur. Um
+      Server, Zertifikate und technische Wartung kümmere ich mich – Sie
+      müssen sich um nichts davon Gedanken machen.</p></div>
+    <div class="zelle"><span class="icon">🔄</span>
+      <h3>Laufende Pflege</h3>
+      <p>Im Rundum-sorglos-Paket sind Änderungen an Texten, Bildern und
+      Inhalten jederzeit inklusive – ohne dass Sie selbst etwas
+      programmieren müssen.</p></div>
+    <div class="zelle"><span class="icon">🤝</span>
+      <h3>Persönliche Beratung</h3>
+      <p>Sie sprechen direkt mit mir – keine Warteschleifen, keine
+      wechselnden Ansprechpartner. Eine E-Mail genügt.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="vorzeile">Design-Sprachen</div>
+  <h2>Drei Stile, passend zur Branche gewählt</h2>
+  <p class="lauftext" style="margin-top:-1rem; margin-bottom:1.4rem;">Sehen Sie selbst,
+  wie unterschiedlich Ihre Website aussehen kann – ein Beispiel je Stil finden
+  Sie auf der <a href="index.html#arbeiten" style="color:var(--cyan);">Startseite unter „Arbeiten"</a>.</p>
+  <div class="stile">
+    <div class="stil kraftvoll"><h3>Kraftvoll</h3>
+      <p>Markanter, dunkler Auftritt mit klaren Kanten – typisch für Handwerk
+      und Technik: Dachdecker, Elektriker, Metallbau.</p></div>
+    <div class="stil elegant"><h3>Elegant</h3>
+      <p>Zentriert, Serifen-Schrift, viel Weißraum – passend für Salons,
+      Cafés, Ateliers und Genuss-Betriebe.</p></div>
+    <div class="stil modern"><h3>Modern</h3>
+      <p>Rund, freundlich, geteilter Aufbau – ideal für Praxen, Studios und
+      Dienstleister mit Fokus auf Vertrauen.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="finale">
+    <div class="vorzeile">Nächster Schritt</div>
+    <h2>Neugierig, wie Ihre Website aussehen könnte?</h2>
+    <p>Der erste Entwurf ist kostenlos und unverbindlich – Sie gehen dabei kein Risiko ein.</p>
+    <a class="cta" href="kontakt.html">Kostenlosen Entwurf anfragen →</a>
+  </div>
+</section>
+
+<footer>
+  <span>© Nico Sommer – Webdesign für alle Branchen</span>
+  <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></span>
+</footer>
+</body>
+</html>

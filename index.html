@@ -175,6 +175,16 @@
   .zeigen { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
   .zeigen.da { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) { .zeigen { opacity: 1; transform: none; transition: none; } }
+  @media (max-width: 600px) {
+    .cta { display: flex; justify-content: center; width: 100%; }
+    section { padding-left: 5.5vw; padding-right: 5.5vw; }
+  }
+  @media (max-width: 600px) {
+    .knoepfe { flex-direction: column; }
+    .zahlen { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .browser iframe { height: 400px; }
+    .hero h1 { font-size: clamp(2rem, 8.5vw, 2.6rem); }
+  }
 </style>
 </head>
 <body>

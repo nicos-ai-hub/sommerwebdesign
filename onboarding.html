@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ihr Website-Fragebogen – sommerwebdesign.com</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0c11; --flaeche: #10131a; --linie: rgba(255,255,255,.08);
+    --text: #e8eaf0; --leise: #9aa3b5;
+    --cyan: #67e8f9; --violett: #a78bfa; --pink: #f0abfc;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text);
+         line-height: 1.65; overflow-x: hidden; }
+  .glut { position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(600px 400px at 85% -5%, rgba(167,139,250,.16), transparent 65%),
+      radial-gradient(700px 500px at -10% 25%, rgba(103,232,249,.10), transparent 65%); }
+  h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
+  .verlauf-text { background: linear-gradient(92deg, var(--cyan), var(--violett) 55%, var(--pink));
+    -webkit-background-clip: text; background-clip: text; color: transparent; }
+  header { display: flex; justify-content: space-between; align-items: center;
+    padding: .85rem 5vw; border-bottom: 1px solid var(--linie); }
+  .marke { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.05rem; }
+  .marke b { color: var(--violett); }
+  main { max-width: 780px; margin: 0 auto; padding: clamp(2rem, 6vw, 3.5rem) 5vw 4rem; }
+  h1 { font-size: clamp(1.7rem, 4.5vw, 2.6rem); font-weight: 700; line-height: 1.15; }
+  .intro { color: var(--leise); margin: 1rem 0 2.2rem; max-width: 58ch; }
+  .block { background: var(--flaeche); border: 1px solid var(--linie); border-radius: 20px;
+    padding: clamp(1.3rem, 4vw, 1.9rem); margin-bottom: 1.2rem; }
+  .block h2 { font-size: 1.1rem; margin-bottom: .3rem; }
+  .block .hinweis { color: var(--leise); font-size: .88rem; margin-bottom: 1rem; }
+  label.feld { display: block; font-size: .85rem; font-weight: 600; color: var(--leise);
+    margin: .9rem 0 .25rem; }
+  input[type=text], input[type=tel], input[type=email], textarea {
+    width: 100%; font: inherit; font-size: .95rem; color: var(--text);
+    background: rgba(255,255,255,.04); border: 1px solid var(--linie);
+    border-radius: 10px; padding: .65rem .9rem; }
+  input:focus, textarea:focus { outline: 2px solid var(--violett); border-color: transparent; }
+  textarea { resize: vertical; min-height: 80px; }
+  .zeile2 { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
+  @media (max-width: 560px) { .zeile2 { grid-template-columns: 1fr; } }
+  /* Klick-Chips (Mehrfachauswahl) */
+  .chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .chips label { cursor: pointer; }
+  .chips input { display: none; }
+  .chips span { display: inline-block; padding: .5rem 1rem; border-radius: 999px;
+    border: 1px solid var(--linie); background: rgba(255,255,255,.03); font-size: .9rem; }
+  .chips input:checked + span { background: linear-gradient(92deg, var(--cyan), var(--violett));
+    color: #0a0c11; font-weight: 600; border-color: transparent; }
+  /* Farbfelder */
+  .farben { display: flex; flex-wrap: wrap; gap: .7rem; }
+  .farben label { cursor: pointer; text-align: center; font-size: .78rem; color: var(--leise); }
+  .farben input { display: none; }
+  .farben .punkt { display: block; width: 54px; height: 54px; border-radius: 14px;
+    border: 3px solid transparent; margin-bottom: .3rem; }
+  .farben input:checked + .punkt { border-color: #fff; box-shadow: 0 0 0 3px var(--violett); }
+  /* Design-Karten */
+  .designs { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 640px) { .designs { grid-template-columns: 1fr; } }
+  .design { cursor: pointer; }
+  .design input { display: none; }
+  .design .karte { border: 2px solid var(--linie); border-radius: 16px; overflow: hidden;
+    transition: border-color .2s, transform .2s; background: #fff; }
+  .design:hover .karte { transform: translateY(-3px); }
+  .design input:checked + .karte { border-color: var(--cyan);
+    box-shadow: 0 0 0 3px rgba(103,232,249,.35); }
+  .design .bild { height: 130px; display: flex; flex-direction: column;
+    justify-content: center; padding: 1rem 1.2rem; gap: .45rem; }
+  .design .bild .balken { height: 10px; border-radius: 5px; }
+  .design .fuss { background: var(--flaeche); padding: .7rem 1rem; display: flex;
+    justify-content: space-between; align-items: center; gap: .5rem; }
+  .design .fuss b { font-size: .92rem; }
+  .design .fuss a { color: var(--cyan); font-size: .8rem; text-decoration: none; }
+  .senden { text-align: center; margin-top: 1.8rem; }
+  .senden button { font: inherit; font-weight: 700; font-size: 1.05rem; cursor: pointer;
+    border: 0; border-radius: 999px; padding: 1rem 2.4rem; color: #0a0c11;
+    background: linear-gradient(92deg, var(--cyan), var(--violett)); }
+  .senden .oder { color: var(--leise); font-size: .85rem; margin-top: .8rem; }
+  .senden .oder button { background: none; border: 1px solid var(--linie); color: var(--text);
+    font-size: .85rem; font-weight: 600; padding: .45rem 1.1rem; }
+  footer { text-align: center; padding: 1.4rem 5vw 2rem; color: var(--leise);
+    font-size: .84rem; border-top: 1px solid var(--linie); }
+  footer a { color: var(--leise); }
+</style>
+</head>
+<body>
+<div class="glut"></div>
+<header>
+  <div class="marke">sommer<b>webdesign</b>.com</div>
+  <span style="color:var(--leise); font-size:.85rem;">Website-Fragebogen · dauert ca. 5 Minuten</span>
+</header>
+
+<main>
+  <h1>Erzählen Sie mir von <span class="verlauf-text" id="anrede">Ihrem Betrieb</span>.</h1>
+  <p class="intro">Je mehr ich über Sie weiß, desto besser wird Ihre Website. Füllen Sie aus,
+  was Sie können – nichts ist Pflicht außer den Firmendaten. Am Ende öffnet sich eine
+  fertige E-Mail an mich: einmal auf „Senden" drücken, fertig.</p>
+
+  <div class="block">
+    <h2>1. Ihre Firmendaten</h2>
+    <p class="hinweis">Diese Angaben brauche ich für Impressum &amp; Datenschutz Ihrer Website (gesetzlich Pflicht).</p>
+    <div class="zeile2">
+      <div><label class="feld">Firmenname + Rechtsform *</label>
+        <input type="text" id="f_firma" placeholder="z.B. Mustermann Heizungsbau GmbH"></div>
+      <div><label class="feld">Inhaber / Geschäftsführer *</label>
+        <input type="text" id="f_inhaber" placeholder="Vor- und Nachname"></div>
+    </div>
+    <label class="feld">Anschrift (Straße, PLZ, Ort) *</label>
+    <input type="text" id="f_anschrift" placeholder="Musterstraße 1, 12345 Musterstadt">
+    <div class="zeile2">
+      <div><label class="feld">Telefon für die Website *</label>
+        <input type="tel" id="f_telefon" placeholder="z.B. 0123 456789"></div>
+      <div><label class="feld">E-Mail für die Website *</label>
+        <input type="email" id="f_email" placeholder="info@ihre-firma.de"></div>
+    </div>
+    <div class="zeile2">
+      <div><label class="feld">USt-ID (falls vorhanden)</label>
+        <input type="text" id="f_ustid" placeholder="DE…"></div>
+      <div><label class="feld">Handwerkskammer / Kammer (falls zutreffend)</label>
+        <input type="text" id="f_kammer" placeholder="z.B. HWK Hildesheim"></div>
+    </div>
+    <label class="feld">Öffnungszeiten</label>
+    <input type="text" id="f_zeiten" placeholder="z.B. Mo–Fr 8–17 Uhr, Sa nach Vereinbarung">
+  </div>
+
+  <div class="block">
+    <h2>2. Was ist Ihnen wichtig?</h2>
+    <p class="hinweis">Klicken Sie alles an, was zu Ihnen passt – das prägt Ton und Auftreten Ihrer Website.</p>
+    <div class="chips" id="wichtig">
+      <label><input type="checkbox" value="Tradition & Erfahrung"><span>🏛 Tradition &amp; Erfahrung</span></label>
+      <label><input type="checkbox" value="Modern & innovativ"><span>✨ Modern &amp; innovativ</span></label>
+      <label><input type="checkbox" value="Persönlich & familiär"><span>🤝 Persönlich &amp; familiär</span></label>
+      <label><input type="checkbox" value="Schnelligkeit & Notdienst"><span>⚡ Schnelligkeit / Notdienst</span></label>
+      <label><input type="checkbox" value="Qualität & Präzision"><span>🎯 Qualität &amp; Präzision</span></label>
+      <label><input type="checkbox" value="Günstige Preise"><span>💶 Faire Preise</span></label>
+      <label><input type="checkbox" value="Regional verwurzelt"><span>📍 Regional verwurzelt</span></label>
+      <label><input type="checkbox" value="Nachhaltigkeit"><span>🌱 Nachhaltigkeit</span></label>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>3. Ihre Farben</h2>
+    <p class="hinweis">Welche Farbwelt soll Ihre Website prägen? (Eine Auswahl – Feinheiten stimmen wir ab.)</p>
+    <div class="farben" id="farbe">
+      <label><input type="radio" name="farbe" value="Logo-Farben behalten" checked><span class="punkt" style="background: conic-gradient(#e74c3c, #f1c40f, #2ecc71, #3498db, #9b59b6, #e74c3c);"></span>Meine Logo-Farben</label>
+      <label><input type="radio" name="farbe" value="Blau"><span class="punkt" style="background:#1d6a96;"></span>Blau</label>
+      <label><input type="radio" name="farbe" value="Grün"><span class="punkt" style="background:#2e7d46;"></span>Grün</label>
+      <label><input type="radio" name="farbe" value="Rot/Terrakotta"><span class="punkt" style="background:#b5432a;"></span>Rot</label>
+      <label><input type="radio" name="farbe" value="Erdtöne/Braun"><span class="punkt" style="background:#8a5a2b;"></span>Erdtöne</label>
+      <label><input type="radio" name="farbe" value="Dunkel/Edel"><span class="punkt" style="background:#1a2129;"></span>Dunkel</label>
+      <label><input type="radio" name="farbe" value="Hell/Freundlich"><span class="punkt" style="background:#f4f6f8; border:1px solid #ccc;"></span>Hell</label>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>4. Welches Design gefällt Ihnen?</h2>
+    <p class="hinweis">Ein Klick auf die Karte wählt aus – „Ansehen" zeigt ein echtes Beispiel in voller Größe.</p>
+    <div class="designs">
+      <label class="design"><input type="radio" name="design" value="Kraftvoll">
+        <div class="karte">
+          <div class="bild" style="background:#2b2118;">
+            <div class="balken" style="width:70%; background:#b5432a;"></div>
+            <div class="balken" style="width:45%; background:#f7f3ee;"></div>
+            <div class="balken" style="width:55%; background:#f7f3ee; opacity:.5;"></div>
+          </div>
+          <div class="fuss"><b>Kraftvoll</b><a href="beispiel-entwurf.html" target="_blank" onclick="event.stopPropagation()">Ansehen ↗</a></div>
+        </div></label>
+      <label class="design"><input type="radio" name="design" value="Elegant">
+        <div class="karte">
+          <div class="bild" style="background:#faf6f2; align-items:center;">
+            <div class="balken" style="width:40%; background:#a6537a;"></div>
+            <div class="balken" style="width:60%; background:#2b2724; opacity:.75;"></div>
+            <div class="balken" style="width:30%; background:#b08d57;"></div>
+          </div>
+          <div class="fuss"><b>Elegant</b><a href="beispiel-friseur.html" target="_blank" onclick="event.stopPropagation()">Ansehen ↗</a></div>
+        </div></label>
+      <label class="design"><input type="radio" name="design" value="Modern">
+        <div class="karte">
+          <div class="bild" style="background:#eef7f5;">
+            <div class="balken" style="width:65%; background:#2f7f74; border-radius:999px;"></div>
+            <div class="balken" style="width:40%; background:#1d5049; opacity:.6; border-radius:999px;"></div>
+            <div class="balken" style="width:52%; background:#2f7f74; opacity:.35; border-radius:999px;"></div>
+          </div>
+          <div class="fuss"><b>Modern</b><a href="beispiel-physio.html" target="_blank" onclick="event.stopPropagation()">Ansehen ↗</a></div>
+        </div></label>
+      <label class="design"><input type="radio" name="design" value="Überraschen Sie mich" checked>
+        <div class="karte">
+          <div class="bild" style="background:linear-gradient(120deg,#10131a,#1d2433); align-items:center; justify-content:center;">
+            <span style="font-size:2rem;">🎁</span>
+          </div>
+          <div class="fuss"><b>Überraschen Sie mich</b><span style="color:var(--leise); font-size:.8rem;">Ich wähle passend</span></div>
+        </div></label>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>5. Was wollen Sie sagen?</h2>
+    <label class="feld">Was soll Ihre Website den Besuchern vermitteln?</label>
+    <textarea id="f_botschaft" placeholder="z.B. Wir sind der zuverlässige Partner für Badsanierung in der Region – seit 30 Jahren, mit eigenem Team, ohne Subunternehmer."></textarea>
+    <label class="feld">Ihre wichtigsten Leistungen (die auf jeden Fall drauf müssen)</label>
+    <textarea id="f_leistungen" placeholder="z.B. Badsanierung, Wärmepumpen, Notdienst…"></textarea>
+    <label class="feld">Gibt es Websites (auch von anderen Firmen), die Ihnen gefallen?</label>
+    <input type="text" id="f_vorbilder" placeholder="Einfach Adressen einfügen, z.B. www.beispiel.de">
+    <label class="feld">Sonstige Wünsche</label>
+    <textarea id="f_wuensche" placeholder="Alles, was Ihnen noch wichtig ist…"></textarea>
+  </div>
+
+  <div class="block" style="border-left:4px solid var(--violett);">
+    <h2>📷 Fotos</h2>
+    <p class="hinweis" style="margin:0;">3–5 aktuelle Fotos (Team, Werkstatt, fertige Arbeiten) machen Ihre Website
+    erst richtig persönlich. Hängen Sie sie einfach an die E-Mail an, die sich gleich öffnet.</p>
+  </div>
+
+  <div class="senden">
+    <button onclick="absenden()">✉ Fragebogen als E-Mail absenden</button>
+    <p class="oder">Öffnet Ihr E-Mail-Programm mit allen Antworten – Sie müssen nur noch auf „Senden" drücken.<br>
+    Klappt das nicht? <button onclick="kopieren(this)">Antworten kopieren</button> und per Mail an sommer@sommerwebdesign.com schicken.</p>
+  </div>
+</main>
+
+<footer>
+  © Nico Sommer · sommerwebdesign.com · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a>
+</footer>
+
+<script>
+// Persönliche Anrede über den Link (?firma=Mustermann+GmbH)
+const firmaParam = new URLSearchParams(location.search).get('firma');
+if (firmaParam) {
+  document.getElementById('anrede').textContent = firmaParam;
+  document.getElementById('f_firma').value = firmaParam;
+}
+
+function wert(id) { return document.getElementById(id).value.trim(); }
+
+function zusammenfassung() {
+  const wichtig = [...document.querySelectorAll('#wichtig input:checked')].map(i => i.value).join(', ');
+  const farbe = document.querySelector('input[name="farbe"]:checked')?.value || '';
+  const design = document.querySelector('input[name="design"]:checked')?.value || '';
+  return [
+    'WEBSITE-FRAGEBOGEN (sommerwebdesign.com)',
+    '=========================================',
+    'Firma: ' + wert('f_firma'),
+    'Inhaber/GF: ' + wert('f_inhaber'),
+    'Anschrift: ' + wert('f_anschrift'),
+    'Telefon: ' + wert('f_telefon'),
+    'E-Mail: ' + wert('f_email'),
+    'USt-ID: ' + (wert('f_ustid') || '-'),
+    'Kammer: ' + (wert('f_kammer') || '-'),
+    'Öffnungszeiten: ' + (wert('f_zeiten') || '-'),
+    '',
+    'Wichtig: ' + (wichtig || '-'),
+    'Farbwunsch: ' + farbe,
+    'Design-Wunsch: ' + design,
+    '',
+    'Botschaft: ' + (wert('f_botschaft') || '-'),
+    'Leistungen: ' + (wert('f_leistungen') || '-'),
+    'Vorbilder: ' + (wert('f_vorbilder') || '-'),
+    'Wünsche: ' + (wert('f_wuensche') || '-'),
+  ].join('\n');
+}
+
+function absenden() {
+  if (!wert('f_firma') || !wert('f_anschrift')) {
+    alert('Bitte mindestens Firmenname und Anschrift ausfüllen – die brauche ich fürs Impressum.');
+    return;
+  }
+  const betreff = 'Fragebogen – ' + wert('f_firma');
+  location.href = 'mailto:sommer@sommerwebdesign.com?subject=' +
+    encodeURIComponent(betreff) + '&body=' + encodeURIComponent(zusammenfassung());
+}
+
+function kopieren(knopf) {
+  navigator.clipboard.writeText(zusammenfassung()).then(() => {
+    knopf.textContent = '✓ Kopiert!';
+    setTimeout(() => knopf.textContent = 'Antworten kopieren', 2000);
+  });
+}
+</script>
+</body>
+</html>

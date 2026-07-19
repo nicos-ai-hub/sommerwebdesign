@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nico Sommer – Moderne Websites für Unternehmen aller Branchen</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="canonical" href="https://www.sommerwebdesign.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sommer Webdesign">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="Nico Sommer – Moderne Websites für Unternehmen aller Branchen">
+<meta property="og:description" content="Ihre Website ist veraltet oder Sie haben noch keine? Ich gestalte moderne, rechtssichere Websites für Firmen und Selbstständige aller Branchen – kostenloser Beispiel-Entwurf vorab, dann passgenaue Umsetzung.">
+<meta property="og:url" content="https://www.sommerwebdesign.com/">
+<meta property="og:image" content="https://www.sommerwebdesign.com/og-bild.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="description" content="Ihre Website ist veraltet oder Sie haben noch keine? Ich gestalte moderne, rechtssichere Websites für Firmen und Selbstständige aller Branchen – kostenloser Beispiel-Entwurf vorab, dann passgenaue Umsetzung.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -177,6 +188,24 @@
   .zeigen { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
   .zeigen.da { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) { .zeigen { opacity: 1; transform: none; transition: none; } }
+  /* Feines Korn: gibt dem Dunkel Tiefe (Druck-Anmutung statt Bildschirm) */
+  body::after { content: ""; position: fixed; inset: 0; z-index: 90; pointer-events: none; opacity: .05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E"); }
+  /* Vorher/Nachher-Vergleich */
+  .vergleich { position: relative; border-radius: 18px; overflow: hidden; border: 1px solid var(--linie);
+    height: clamp(320px, 46vw, 430px); box-shadow: 0 24px 60px rgba(0,0,0,.45); user-select: none; }
+  .seite-alt, .seite-neu { position: absolute; inset: 0; overflow: hidden; }
+  .seite-alt { z-index: 2; clip-path: inset(0 calc(100% - var(--x, 55%)) 0 0); }
+  .griff { position: absolute; top: 0; bottom: 0; left: var(--x, 55%); width: 2px; background: #fff; z-index: 3; }
+  .griff::after { content: "⇄"; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 44px; height: 44px; border-radius: 50%; background: #fff; color: #0a0c11; display: grid;
+    place-items: center; font-size: 1.15rem; box-shadow: 0 6px 18px rgba(0,0,0,.45); }
+  .vergleich input[type=range] { position: absolute; inset: 0; width: 100%; height: 100%;
+    opacity: 0; cursor: ew-resize; z-index: 4; margin: 0; -webkit-appearance: none; appearance: none; }
+  .etikett { position: absolute; top: .85rem; z-index: 3; font-size: .7rem; letter-spacing: .12em;
+    font-weight: 600; padding: .32rem .75rem; border-radius: 999px; font-family: 'Inter', sans-serif; }
+  .etikett.alt { left: .85rem; background: rgba(255,255,255,.88); color: #444; }
+  .etikett.neu { right: .85rem; background: rgba(10,12,17,.78); color: var(--cyan); border: 1px solid var(--linie); }
   @media (max-width: 600px) {
     .cta { display: flex; justify-content: center; width: 100%; }
     section { padding-left: 5.5vw; padding-right: 5.5vw; }
@@ -188,6 +217,7 @@
     .hero h1 { font-size: clamp(2rem, 8.5vw, 2.6rem); }
   }
 </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Sommer Webdesign", "url": "https://www.sommerwebdesign.com/", "image": "https://www.sommerwebdesign.com/og-bild.png", "description": "Moderne, rechtssichere Websites für Unternehmen aller Branchen – kostenloser Beispiel-Entwurf vorab.", "email": "sommer@sommerwebdesign.com", "telephone": "+491737825401", "address": {"@type": "PostalAddress", "streetAddress": "Altenhof 15", "postalCode": "37115", "addressLocality": "Duderstadt", "addressCountry": "DE"}, "founder": {"@type": "Person", "name": "Nico Sommer"}, "priceRange": "€€", "areaServed": "Deutschland"}</script>
 </head>
 <body>
 <div class="glut"></div>
@@ -272,6 +302,48 @@
 </section>
 
 <section class="zeigen">
+  <div class="vorzeile">Der Unterschied</div>
+  <h2>Ziehen Sie den Regler – aus alt wird neu</h2>
+  <div class="vergleich" id="vergleich" style="--x:55%;">
+    <div class="seite-neu" style="background:#14100d;">
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:14px 20px; border-bottom:1px solid rgba(255,255,255,.09);">
+        <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; color:#fff;">Dachdeckerei <span style="color:#f97316;">Muster</span></span>
+        <span style="background:#f97316; color:#14100d; font-size:.7rem; font-weight:700; padding:.35rem .85rem; border-radius:999px; white-space:nowrap;">Angebot anfragen</span>
+      </div>
+      <div style="padding:clamp(18px,4vw,34px) 20px 0;">
+        <div style="font-size:.66rem; letter-spacing:.16em; color:#f97316; font-weight:600; font-family:'Inter',sans-serif;">MEISTERBETRIEB · MUSTERSTADT</div>
+        <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; color:#fff; font-size:clamp(1.25rem,3.2vw,2rem); line-height:1.12; margin-top:10px; max-width:20ch;">Ihr Dach in Meisterhand.</div>
+        <p style="color:#c7bdb4; font-size:.82rem; margin-top:10px; max-width:44ch; font-family:'Inter',sans-serif;">Wir decken, sanieren und reparieren – zuverlässig, sauber und termintreu.</p>
+        <div style="display:flex; gap:8px; margin-top:16px; flex-wrap:wrap; font-family:'Inter',sans-serif;">
+          <span style="border:1px solid rgba(249,115,22,.4); color:#f5ede6; font-size:.72rem; padding:.32rem .7rem; border-radius:999px;">Dachsanierung</span>
+          <span style="border:1px solid rgba(249,115,22,.4); color:#f5ede6; font-size:.72rem; padding:.32rem .7rem; border-radius:999px;">Reparatur</span>
+          <span style="border:1px solid rgba(249,115,22,.4); color:#f5ede6; font-size:.72rem; padding:.32rem .7rem; border-radius:999px;">Dämmung</span>
+        </div>
+      </div>
+    </div>
+    <div class="seite-alt" style="background:#f7f5ef;">
+      <div style="background:linear-gradient(#9db3c8,#6b8aa6); padding:12px 18px; font-family:'Times New Roman',serif;">
+        <span style="font-size:1.4rem; font-weight:bold; color:#1a2a44; text-shadow:1px 1px 0 #ffffffaa;">Dachdeckerei Muster</span><br>
+        <span style="font-size:.72rem; color:#22334d;">Willkommen auf unserer Homepage!!!</span>
+      </div>
+      <div style="background:#dfe6ee; border-bottom:1px solid #b8c4d4; padding:6px 18px; font-size:.68rem; font-family:Verdana,sans-serif; color:#1440a0;">
+        <u>Startseite</u> &nbsp;|&nbsp; <u>Über uns</u> &nbsp;|&nbsp; <u>Galerie</u> &nbsp;|&nbsp; <u>Gästebuch</u> &nbsp;|&nbsp; <u>Kontakt</u>
+      </div>
+      <div style="padding:14px 18px; font-family:'Times New Roman',serif; color:#222; font-size:.84rem; line-height:1.55;">
+        <p>Sehr geehrter Besucher, herzlich willkommen auf der Homepage der Dachdeckerei Muster. Wir sind Ihr kompetenter Partner rund ums Dach. Auf den folgenden Seiten finden Sie Informationen über unseren Betrieb.</p>
+        <div style="border:2px inset #999; background:#ffffe0; padding:6px 10px; margin-top:12px; font-size:.68rem; font-family:Verdana,sans-serif;">+++ NEU: Wir sind jetzt auch per E-Mail erreichbar! +++</div>
+        <p style="margin-top:12px; font-size:.66rem; color:#666; font-family:Verdana,sans-serif;">Sie sind Besucher Nr. 003847 &nbsp;·&nbsp; Zuletzt aktualisiert: 12.03.2011</p>
+      </div>
+    </div>
+    <span class="etikett alt">VORHER</span>
+    <span class="etikett neu">NACHHER – MEIN ENTWURF</span>
+    <div class="griff"></div>
+    <input type="range" min="4" max="96" value="55" aria-label="Vorher-Nachher-Vergleich verschieben">
+  </div>
+  <p class="unterzeile">Fiktiver Musterbetrieb – links, wie viele Firmen-Websites heute noch aussehen. Rechts mein Entwurf.</p>
+</section>
+
+<section class="zeigen">
   <div class="vorzeile">So läuft's</div>
   <h2>Erst sehen, dann entscheiden</h2>
   <div class="schritte">
@@ -314,8 +386,7 @@
     </div>
   </div>
   <p class="fussnote">Rundum-sorglos-Paket: Mindestlaufzeit 12 Monate, danach monatlich kündbar.
-  Alle Preise als Gesamtpreis; als Kleinunternehmer nach § 19 UStG wird keine Umsatzsteuer berechnet.
-  <em>[HINWEIS: Satz löschen, falls Umsatzsteuer berechnet wird]</em></p>
+  Alle Preise als Gesamtpreis; als Kleinunternehmer nach § 19 UStG wird keine Umsatzsteuer berechnet.</p>
 </section>
 
 <section id="kontakt" class="zeigen">
@@ -352,6 +423,34 @@ const beobachter = new IntersectionObserver(eintraege => {
   eintraege.forEach(e => { if (e.isIntersecting) { e.target.classList.add('da'); beobachter.unobserve(e.target); } });
 }, { threshold: .12 });
 document.querySelectorAll('.zeigen').forEach(el => beobachter.observe(el));
+// Vorher/Nachher-Regler
+const vergleich = document.getElementById('vergleich');
+if (vergleich) {
+  const regler = vergleich.querySelector('input');
+  regler.addEventListener('input', () => vergleich.style.setProperty('--x', regler.value + '%'));
+}
+// Zahlen zählen beim ersten Anblick hoch (außer bei reduzierter Bewegung)
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const zahlBeobachter = new IntersectionObserver(eintraege => {
+    eintraege.forEach(e => {
+      if (!e.isIntersecting) return;
+      zahlBeobachter.unobserve(e.target);
+      e.target.querySelectorAll('.zahl').forEach(z => {
+        const roh = z.textContent, m = roh.match(/\d+/);
+        if (!m) return;
+        const ziel = +m[0], vor = roh.slice(0, m.index), nach = roh.slice(m.index + m[0].length);
+        const start = performance.now(), dauer = 1100;
+        const tick = t => {
+          const p = Math.min((t - start) / dauer, 1);
+          z.textContent = vor + Math.round(ziel * (1 - Math.pow(1 - p, 3))) + nach;
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+    });
+  }, { threshold: .5 });
+  document.querySelectorAll('.zahlen').forEach(el => zahlBeobachter.observe(el));
+}
 </script>
 </body>
 </html>

@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Über mich – Nico Sommer | sommerwebdesign.com</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta name="description" content="KI liefert hundert Möglichkeiten – ich erkenne die eine, die zu Ihnen passt. Websites, Logos und Grafikdesign mit Geschmack, ehrlichem Feedback und kostenlosem Beispiel vorab.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -37,8 +38,8 @@
     padding: .85rem 5vw; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
     background: rgba(10, 12, 17, .72); border-bottom: 1px solid var(--linie);
   }
-  .marke { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.05rem; letter-spacing: .01em; }
-  .marke b { color: var(--violett); }
+  .marke { display: inline-flex; align-items: center; gap: .55rem; border: 1.5px solid rgba(232,234,240,.7); border-radius: 999px; padding: .42rem 1.05rem; font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: .78rem; letter-spacing: .18em; color: #e8eaf0; }
+  .marke b { color: #67e8f9; font-weight: 500; }
   nav { display: flex; gap: 1.6rem; align-items: center; flex-wrap: wrap; }
   nav a { color: var(--leise); text-decoration: none; font-size: .9rem; font-weight: 500; position: relative; }
   nav a:hover { color: #fff; }
@@ -118,7 +119,7 @@
 <body>
 <div class="glut"></div>
 <header>
-  <div class="marke">sommer<b>webdesign</b>.com</div>
+  <div class="marke"><svg width="16" height="9" viewBox="0 0 16 9" aria-hidden="true"><path d="M1 9A7 7 0 0 1 15 9Z" fill="#facc15"/></svg>SOMMER <b>WEBDESIGN</b></div>
   <button class="nav-knopf" aria-label="Menü öffnen" onclick="document.querySelector('nav').classList.toggle('offen')">☰ Menü</button>
   <nav onclick="if(event.target.tagName==='A')this.classList.remove('offen')">
     <a href="index.html">Start</a>

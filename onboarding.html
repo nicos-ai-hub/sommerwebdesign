@@ -248,6 +248,25 @@
     <input type="text" id="f_vorbilder" placeholder="z.B. www.beispiel.de">
     <label class="feld">Sonstige Wünsche</label>
     <textarea id="f_wuensche" placeholder="Alles, was Ihnen noch wichtig ist…"></textarea>
+
+    <label class="feld" style="margin-top:1.2rem;">Welches Paket wünschen Sie?</label>
+    <div style="display:grid; gap:.6rem;">
+      <label style="display:flex; gap:.6rem; align-items:flex-start; border:1px solid var(--linie); border-radius:12px; padding:.75rem .9rem; cursor:pointer;">
+        <input type="radio" name="paket" value="Einmal-Paket (899 € einmalig)" style="margin-top:.25rem;">
+        <span><b>Einmal-Paket</b> – 899 € einmalig<br>
+        <small style="color:var(--leise);">Website komplett, gehört danach Ihnen. Hosting organisieren Sie selbst.</small></span>
+      </label>
+      <label style="display:flex; gap:.6rem; align-items:flex-start; border:1px solid var(--linie); border-radius:12px; padding:.75rem .9rem; cursor:pointer;">
+        <input type="radio" name="paket" value="Rundum-Paket (49 €/Monat)" checked style="margin-top:.25rem;">
+        <span><b>Rundum-Paket</b> – 49 €/Monat <span style="color:var(--cyan);">(beliebt)</span><br>
+        <small style="color:var(--leise);">Alles inklusive: Hosting, Pflege, Änderungen jederzeit. Mindestlaufzeit 12 Monate.</small></span>
+      </label>
+      <label style="display:flex; gap:.6rem; align-items:flex-start; border:1px solid var(--linie); border-radius:12px; padding:.75rem .9rem; cursor:pointer;">
+        <input type="radio" name="paket" value="Noch unsicher - bitte beraten" style="margin-top:.25rem;">
+        <span><b>Noch unsicher</b><br>
+        <small style="color:var(--leise);">Kein Problem – wir besprechen es einfach kurz.</small></span>
+      </label>
+    </div>
   </section>
 
   <!-- SCHRITT 6: Prüfen & Senden -->
@@ -294,6 +313,7 @@ function zusammenfassung() {
   const wichtig = [...document.querySelectorAll('#wichtig input:checked')].map(i => i.value).join(', ');
   const farbe = document.querySelector('input[name="farbe"]:checked')?.value || '';
   const design = document.querySelector('input[name="design"]:checked')?.value || '';
+  const paket = document.querySelector('input[name="paket"]:checked')?.value || '';
   return [
     'WEBSITE-FRAGEBOGEN (sommerwebdesign.com)',
     '=========================================',
@@ -309,6 +329,7 @@ function zusammenfassung() {
     'Wichtig: ' + (wichtig || '-'),
     'Farbwunsch: ' + farbe,
     'Design-Wunsch: ' + design,
+    'Paket: ' + (paket || '-'),
     '',
     'Botschaft: ' + (wert('f_botschaft') || '-'),
     'Leistungen: ' + (wert('f_leistungen') || '-'),

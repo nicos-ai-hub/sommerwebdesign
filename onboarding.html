@@ -371,9 +371,16 @@ function blaettern(richtung) {
 }
 
 function perMail() {
+  const text = zusammenfassung();
+  if (text.length > 1600) {
+    alert('Ihre Antworten sind ausführlich – super! Manche Mail-Programme ' +
+      'schneiden so lange Texte aber ab. Nutzen Sie am besten den ' +
+      'WhatsApp-Knopf oder "Kopieren" und fügen Sie den Text selbst in ' +
+      'eine E-Mail an sommer@sommerwebdesign.com ein.');
+  }
   location.href = 'mailto:sommer@sommerwebdesign.com?subject=' +
     encodeURIComponent('Fragebogen – ' + wert('f_firma')) +
-    '&body=' + encodeURIComponent(zusammenfassung());
+    '&body=' + encodeURIComponent(text);
 }
 
 function kopieren(knopf) {

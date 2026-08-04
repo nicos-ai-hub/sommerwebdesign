@@ -415,80 +415,11 @@
     </div>
   </div>
   <style>
-    .konfig { margin-top: 1.6rem; border: 1px solid var(--linie); border-radius: 20px;
-      background: var(--flaeche); padding: clamp(1.2rem, 3.5vw, 1.8rem); }
-    .konfig h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; margin-bottom: .3rem; }
-    .konfig .untertitel { color: var(--leise); font-size: .9rem; margin-bottom: 1rem; }
-    .konfig label.opt { display: flex; gap: .7rem; align-items: center; border: 1px solid var(--linie);
-      border-radius: 12px; padding: .65rem .9rem; cursor: pointer; font-size: .93rem;
-      transition: border-color .2s, background .2s; }
-    .konfig label.opt:hover { border-color: rgba(103,232,249,.45); }
-    .konfig label.opt:has(input:checked) { border-color: var(--cyan);
-      background: rgba(103,232,249,.07); }
-    .konfig .gruppe { display: grid; gap: .6rem; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      margin-bottom: 1rem; }
-    .konfig .summe { display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 1rem; border-top: 1px solid var(--linie); padding-top: 1rem; }
-    .konfig .betrag-live { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; }
-    .konfig .betrag-live small { font-size: .85rem; font-weight: 400; color: var(--leise); display: block; }
     @media (prefers-reduced-motion: no-preference) {
       .verlauf-text { background-size: 200% auto; animation: verlauf-wandern 6s ease-in-out infinite alternate; }
       @keyframes verlauf-wandern { to { background-position: 100% center; } }
     }
   </style>
-  <div class="konfig" id="konfigurator">
-    <h3>🧮 Stellen Sie Ihr Paket zusammen</h3>
-    <div class="untertitel">Klicken, kombinieren, Preis live sehen – genau solche
-    Rechner baue ich übrigens auch für Ihre Website.</div>
-    <div class="gruppe">
-      <label class="opt"><input type="radio" name="k-basis" value="einmal" data-einmal="899">
-        <span><b>Einmal-Paket</b> · 899 € einmalig</span></label>
-      <label class="opt"><input type="radio" name="k-basis" value="rundum" data-monat="49" checked>
-        <span><b>Rundum-Paket</b> · 49 €/Monat</span></label>
-    </div>
-    <div class="gruppe">
-      <label class="opt"><input type="checkbox" class="k-extra" value="Logo-Design" data-einmal="149">
-        <span>🎨 Logo-Design · +149 €</span></label>
-      <label class="opt"><input type="checkbox" class="k-extra" value="Zusatzseite" data-einmal="79">
-        <span>📄 Zusatzseite · +79 €</span></label>
-      <label class="opt"><input type="checkbox" class="k-extra" value="Rechner/Formular" data-einmal="99">
-        <span>🧮 Rechner o. Formular · +99 €</span></label>
-      <label class="opt"><input type="checkbox" class="k-extra" value="Weitere Sprache" data-einmal="99">
-        <span>🌍 Weitere Sprache · +99 €</span></label>
-    </div>
-    <div class="summe">
-      <div class="betrag-live" id="k-summe"></div>
-      <a class="cta" id="k-anfrage" href="#">Dieses Paket unverbindlich anfragen →</a>
-    </div>
-  </div>
-  <script>
-  (function() {
-    function rechne() {
-      var basis = document.querySelector('input[name="k-basis"]:checked');
-      var monat = parseInt(basis.dataset.monat || 0);
-      var einmal = parseInt(basis.dataset.einmal || 0);
-      var extras = [];
-      document.querySelectorAll('.k-extra:checked').forEach(function(e) {
-        einmal += parseInt(e.dataset.einmal); extras.push(e.value);
-      });
-      var text = monat ? (monat + ' €/Monat' + (einmal ? ' + ' + einmal + ' € einmalige Extras' : ''))
-                       : (einmal + ' € einmalig');
-      var el = document.getElementById('k-summe');
-      el.innerHTML = text + '<small>' + (monat ? 'inkl. Hosting, Pflege & Änderungen' : 'Website gehört danach Ihnen') + '</small>';
-      var paket = (monat ? 'Rundum-Paket (49 €/Monat)' : 'Einmal-Paket (899 €)') +
-        (extras.length ? ' + Extras: ' + extras.join(', ') : '');
-      document.getElementById('k-anfrage').href =
-        'mailto:sommer@sommerwebdesign.com?subject=' +
-        encodeURIComponent('Anfrage: ' + paket) +
-        '&body=' + encodeURIComponent('Guten Tag Herr Sommer,\n\nich interessiere mich für: ' +
-          paket + '\n\nMein Unternehmen: \nMeine bisherige Website (falls vorhanden): \n\nViele Grüße');
-    }
-    document.querySelectorAll('#konfigurator input').forEach(function(i) {
-      i.addEventListener('change', rechne);
-    });
-    rechne();
-  })();
-  </script>
   <p class="fussnote">Rundum-sorglos-Paket: Mindestlaufzeit 12 Monate, danach monatlich kündbar.
   Alle Preise als Gesamtpreis; als Kleinunternehmer nach § 19 UStG wird keine Umsatzsteuer berechnet.</p>
 </section>

@@ -185,6 +185,30 @@
   .preis li { padding: .3rem 0; font-size: .94rem; color: var(--leise); }
   .preis li::before { content: "→ "; color: var(--cyan); font-weight: 700; }
   .fussnote { margin-top: 1.2rem; font-size: .82rem; color: var(--leise); max-width: 72ch; }
+  /* Ehrlicher Vergleich */
+  .tabelle-halter { overflow-x: auto; border: 1px solid var(--linie); border-radius: 18px;
+    background: var(--flaeche); }
+  .vergleichstabelle { width: 100%; border-collapse: collapse; font-size: .9rem; min-width: 700px; }
+  .vergleichstabelle th, .vergleichstabelle td { padding: .85rem 1.05rem; text-align: left;
+    border-bottom: 1px solid var(--linie); vertical-align: top; }
+  .vergleichstabelle tr:last-child td { border-bottom: 0; }
+  .vergleichstabelle th { color: var(--leise); font-weight: 600; font-size: .76rem;
+    letter-spacing: .08em; text-transform: uppercase; }
+  .vergleichstabelle td:first-child { color: var(--leise); font-size: .84rem; }
+  .vergleichstabelle th:nth-child(2), .vergleichstabelle td:nth-child(2) {
+    background: rgba(103,232,249,.06); }
+  .vergleichstabelle th:nth-child(2) { color: var(--cyan); }
+  .vergleichstabelle td:nth-child(2) { color: var(--text); font-weight: 600; }
+  .vergleichstabelle td { color: var(--leise); }
+  .vergleichstabelle .gut { color: #34d399; font-weight: 700; }
+  /* Alte-Website-Banner */
+  .alt-banner { margin-top: 1.4rem; display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 1rem; border: 1px solid transparent;
+    border-radius: 18px; padding: 1.15rem 1.4rem;
+    background: linear-gradient(var(--flaeche), var(--flaeche)) padding-box,
+                linear-gradient(120deg, var(--cyan), var(--violett), var(--pink)) border-box; }
+  .alt-banner p { color: var(--leise); font-size: .94rem; max-width: 52ch; }
+  .alt-banner p b { color: var(--text); }
   /* Kontakt-Finale */
   .finale {
     text-align: center; border: 1px solid var(--linie); border-radius: 28px;
@@ -420,6 +444,43 @@
   </div>
 </section>
 
+<section class="zeigen">
+  <div class="vorzeile">Meine Versprechen</div>
+  <h2>Sechs Zusagen – schwarz auf weiß</h2>
+  <div class="bento">
+    <div class="zelle schmal"><span class="icon">🔍</span>
+      <h3>Erst sehen, dann zahlen</h3>
+      <p>Sie bekommen den fertigen Entwurf, bevor Sie einen Cent bezahlen.
+      In dieser Branche alles andere als selbstverständlich.</p></div>
+    <div class="zelle schmal"><span class="icon">💶</span>
+      <h3>Keine Einrichtungsgebühr</h3>
+      <p>Manche Anbieter verlangen zum Start bis zu 299&nbsp;€ extra.
+      Bei mir: 0&nbsp;€ – die Preise auf dieser Seite sind komplett.</p></div>
+    <div class="zelle schmal"><span class="icon">⚡</span>
+      <h3>Änderungen ohne Ticket-Drama</h3>
+      <p>Im Rundum-Paket schicken Sie einfach eine E-Mail. Kleine Änderungen
+      sind meist noch am selben Tag zur Freigabe fertig.</p></div>
+    <div class="zelle schmal"><span class="icon">🔓</span>
+      <h3>Alles bleibt Ihres</h3>
+      <p>Ihre Domain gehört Ihnen, Ihre Inhalte sowieso. Wenn Sie gehen,
+      bekommen Sie Ihre komplette Website als Paket mit.</p></div>
+    <div class="zelle schmal"><span class="icon">🧾</span>
+      <h3>Rechtliches ab Werk</h3>
+      <p>Impressum und Datenschutzerklärung nach deutschem Recht sind immer
+      dabei – kein kostenpflichtiges Extra wie bei manchen Baukästen.</p></div>
+    <div class="zelle schmal"><span class="icon">👤</span>
+      <h3>Fester Ansprechpartner</h3>
+      <p>Kein Callcenter, kein Chatbot-Labyrinth: Sie schreiben mir,
+      und Sie bekommen zuverlässig eine Antwort.</p></div>
+  </div>
+  <div class="alt-banner">
+    <p><b>Sie haben schon eine Website?</b> Schicken Sie mir einfach den Link –
+    ich baue Ihnen den kompletten Neuentwurf. Kostenlos, zum direkten Vergleich.</p>
+    <a class="cta" style="font-size:.9rem; padding:.7rem 1.4rem;"
+      href="mailto:sommer@sommerwebdesign.com?subject=Neuentwurf%20f%C3%BCr%20meine%20alte%20Website&body=Guten%20Tag%20Herr%20Sommer%2C%0A%0Ameine%20bisherige%20Website%3A%20%0A%0AViele%20Gr%C3%BC%C3%9Fe">Alte Website einschicken →</a>
+  </div>
+</section>
+
 <section id="preise" class="zeigen">
   <div class="vorzeile">Preise</div>
   <h2>Klare Preise, keine Überraschungen</h2>
@@ -517,6 +578,25 @@
   </script>
   <p class="fussnote">Rundum-sorglos-Paket: Mindestlaufzeit 12 Monate, danach monatlich kündbar.
   Alle Preise als Gesamtpreis; als Kleinunternehmer nach § 19 UStG wird keine Umsatzsteuer berechnet.</p>
+</section>
+
+<section class="zeigen">
+  <div class="vorzeile">Der ehrliche Vergleich</div>
+  <h2>Baukasten, Miet-Anbieter, Agentur – oder ich?</h2>
+  <div class="tabelle-halter">
+  <table class="vergleichstabelle">
+    <tr><th></th><th>Sommer Webdesign</th><th>Baukasten (Wix &amp; Co.)</th><th>Website-Miete</th><th>Klassische Agentur</th></tr>
+    <tr><td>Fertiger Entwurf vor Bezahlung</td><td><span class="gut">✓</span> immer</td><td>–</td><td>–</td><td>–</td></tr>
+    <tr><td>Preis</td><td>899&nbsp;€ einmalig oder 49&nbsp;€/Monat</td><td>10–50&nbsp;€/Monat + Ihre Arbeitszeit</td><td>30–100&nbsp;€/Monat</td><td>meist 1.500–8.000&nbsp;€</td></tr>
+    <tr><td>Einrichtungsgebühr</td><td><span class="gut">0&nbsp;€</span></td><td>0&nbsp;€</td><td>teils bis 299&nbsp;€</td><td>–</td></tr>
+    <tr><td>Wer baut und pflegt?</td><td>Ich – Sie schicken nur Wünsche</td><td>Sie selbst</td><td>Anbieter, meist mit Vorlagen</td><td>die Agentur</td></tr>
+    <tr><td>Änderungen nach Livegang</td><td>per E-Mail, meist am selben Tag*</td><td>selbst klicken</td><td>teils nur 1 Textänderung/Monat</td><td>Ticket + 50–150&nbsp;€/Std.</td></tr>
+    <tr><td>Website bei Kündigung mitnehmbar</td><td><span class="gut">✓</span> komplett</td><td>teils</td><td>häufig nicht</td><td>je nach Vertrag</td></tr>
+    <tr><td>Ansprechpartner</td><td>eine feste Person</td><td>Chatbot/Hotline</td><td>Hotline</td><td>wechselnde Projektleiter</td></tr>
+  </table>
+  </div>
+  <p class="fussnote">Marktspannen aus öffentlichen Preislisten und Testberichten (Stand: August 2026).
+  *Im Rundum-Paket für kleine Text- und Bildänderungen; größere Umbauten nach Absprache.</p>
 </section>
 
 <section id="kontakt" class="zeigen">
